@@ -2,9 +2,17 @@
 
 {
   fonts = {
-    fontconfig.enable = true;
-    enableFontDir = true;
-    enableGhostscriptFonts = true;
+    fontconfig = {
+      enable = true;
+
+      defaultFonts = {
+        emoji = [ "JoyPixels" ];
+        monospace = [ "Source Code Pro" ];
+      };
+    };
+    fontDir = {
+      enable = true;
+    };
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "SourceCodePro" "FiraCode" "Meslo" ]; })
 
@@ -15,11 +23,7 @@
       ttf_bitstream_vera
       liberation_ttf
     ];
-    
-    fontconfig.defaultFonts = {
-      emoji = [ "JoyPixels" ];
-      monospace = [ "Source Code Pro" ];
-    };
+    enableGhostscriptFonts = true;
   };
 }
 
